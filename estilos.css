@@ -1,6 +1,7 @@
 * body {
     margin: 0px;
     padding: 0px;
+    font-family: "Rhodium Libre", serif;
 }
 #topo{
     width: 980px;
@@ -19,10 +20,44 @@
     height: 100px;
     background-color: brown;
     float: right;
+    text-align: center;
+    word-spacing: 10px;
+}
+#menu a{
+    color : white;
+    text-decoration: none;
 }
 #banner{
-    width: 700px;
-    height: 400px;
-    background-color: aqua;
+    width: 980px;
+    height: 300px;
+    background-color: blue;
     margin: auto;
+    margin-top: 50px;
+}
+#conteudoSite{
+    width: 980px;
+    height: 500px;
+    background-color: green;
+    margin: auto;
+    margin-top: 50px;
+}
+#esquerda{
+    width: 450px;
+    height: 500px;
+    background-color: yellow;
+    float: left;
+}
+#direita{
+    width: 450px;
+    height: 500px;
+    background-color: orange;
+    float: right;
+}
+#rodape{
+    width: 980px;
+    height: 50px;
+    background-color: purple;
+    margin: auto;
+    margin-top: 50px;
+    clear: both;
 }
