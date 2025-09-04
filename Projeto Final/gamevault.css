@@ -10,8 +10,8 @@
     /* background-color: lightgray; */
 }
 #logo {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     float: left;
     /*background-color: lightgreen; */
     border-radius: 15px;
@@ -95,6 +95,7 @@
     background-color: mediumturquoise;
     margin-top: 15px;
     border-radius: 15px;
+    clear: both;
 }
 #rodape a {
     text-decoration: none;
@@ -102,4 +103,11 @@
     font-size: 20px;
     line-height: 50px;
     margin-left: 20px;
+}
+input, textarea {
+    width: 300px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
 }
