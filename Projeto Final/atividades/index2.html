@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Exercicio 2</h1>
+    <form>
+        Nome: <input type="text" id="nome"><br>
+        <select name="Turma" id="Turma">
+            <option value="6°ano">6°ano</option>
+            <option value="7°ano">7°ano</option>
+            <option value="8°ano">8°ano</option>
+            <option value="9°ano">9°ano</option>
+            <option value="1°ano Ensino médio">1°ano Ensino médio</option>
+            <option value="2°ano Ensino médio">2°ano Ensino médio</option>
+            <option value="3°ano Ensino médio">3°ano Ensino médio</option>
+        </select><br>
+        <fieldset>
+            <legend>Matutino ou Noturno?</legend>
+            <input type="radio" id="Manhã" name="turno" value="Manhã">
+            <label for="Manhã">Manhã</label><br>
+            <input type="radio" id="Tarde" name="turno" value="tarde">
+            <label for="Tarde">Tarde</label><br>
+            <input type="radio" id="Noite" name="turno" value="noturno">
+            <label for="Noite">Noite</label><br>
+        </fieldset>
+        <input type="submit" onclick="imprimirVariavies()" value="Enviar"><br>
+    </form>
+    <script>
+        function imprimirVariavies(){
+        var nome = document.getElementById("nome").value;
+        var Turma = document.getElementById("Turma").value;
+        var turno = document.querySelector('input[name="turno"]:checked').value;
+       // var ano = 2025;
+        alert(nome + " " + Turma + " " + turno);
+        }
+    </script>
+    
+</body>
+</html>

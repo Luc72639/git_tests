@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Exercicio 3</h1>
+    <form>
+        Produto: <input type="text" id="produto"><br>
+        <select name="categoria" id="categoria">
+            <option value="alimento">Alimento</option>
+            <option value="bebida">Bebida</option>
+            <option value="limpeza">Limpeza</option>
+            <option value="higiene">Higiene</option>
+            <option value="outros">Outros</option>
+        </select><br>
+        <fieldset>
+            <legend>Em estoque?</legend>
+            <input type="radio" id="sim" name="disponivel" value="sim">
+            <label for="sim">Sim</label><br>
+            <input type="radio" id="nao" name="disponivel" value="nao">
+            <label for="nao">Não</label><br>
+        </fieldset>
+        <input type="submit" onclick="imprimirVariavies()" value="Enviar"><br>
+    </form>
+</body>
+</html>
+    <script>
+        function imprimirVariavies(){
+        var produto = document.getElementById("produto").value;
+        var categoria = document.getElementById("categoria").value;
+        var disponivel = document.querySelector('input[name="disponivel"]:checked').value;
+       // var ano = 2025;
+        alert(produto + "" + categoria + "" + disponivel);
+        }
+    </script>
+</body>
+</html>

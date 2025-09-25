@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Exercicio 1</h1>
+    <form>
+        Filme: <input type="text" id="filme"><br>
+        <select name="genero" id="genero">
+            <option value="acao">Ação</option>
+            <option value="aventura">Aventura</option>
+            <option value="comedia">Comédia</option>
+            <option value="drama">Drama</option>
+            <option value="terror">Terror</option>
+        </select><br>
+        <fieldset>
+            <legend>Assistindo?</legend>
+            <input type="radio" id="sim" name="assistindo" value="sim">
+            <label for="sim">Sim</label><br>
+            <input type="radio" id="nao" name="assistindo" value="nao">
+            <label for="nao">Não</label><br>
+        </fieldset>
+        <input type="submit" onclick="imprimirVariavies()" value="Enviar"><br>
+    </form>
+    </body>
+</html>
+    <script>
+        function imprimirVariavies(){
+        var filme = document.getElementById("filme").value;
+        var genero = document.getElementById("genero").value;
+        var assistindo = document.querySelector('input[name="assistindo"]:checked').value;
+       // var ano = 2025;
+        alert(filme + " " + genero + " " + assistindo);
+        }
+    </script>
