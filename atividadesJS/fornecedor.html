@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="fornecedor.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    Nome do Fornecedor: <input type="text" id="nomeFornecedor"><br>
+    <select id="Estado">
+        <option value="SP">São Paulo</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <option value="MG">Minas Gerais</option>
+        <option value="ES">Espírito Santo</option>
+        <option value="BA">Bahia</option>
+        <option value="PE">Pernambuco</option>
+        <option value="CE">Ceará</option>
+        <option value="RS">Rio Grande do Sul</option>
+        <option value="SC">Santa Catarina</option>
+        <option value="PR">Paraná</option>
+        <option value="GO">Goiás</option>
+        <option value="DF">Distrito Federal</option>
+        <option value="TO">Tocantins</option>
+        <option value="PA">Pará</option>
+        <option value="AM">Amazonas</option>
+        <option value="RR">Roraima</option>
+        <option value="AP">Amapá</option>
+        <option value="AC">Acre</option>
+        <option value="RO">Rondônia</option>
+        <option value="MA">Maranhão</option>
+        <option value="PI">Piauí</option>
+        <option value="MT">Mato Grosso</option>
+        <option value="MS">Mato Grosso do Sul</option>
+        <option value="AL">Alagoas</option>
+        <option value="SE">Sergipe</option>
+        <option value="PB">Paraíba</option>
+    </select><br>
+        Cidade: <input type="text" id="cidade"><br>
+        Preço de compra: <input type="text" id="preco"><br>
+        <label for="pessoa_fisica">Pessoa física:</label> 
+        <input type="checkbox" id="pessoa_fisica"><br>
+        <label for="pessoa_juridica">Pessoa jurídica:</label>
+        <input type="checkbox" id="pessoa_juridica"><br>
+        <input type="button" value="Cadastrar Fornecedor" onclick="cadastrarFornecedor()">
+</body>
+</html>

@@ -1,0 +1,192 @@
+{
+  "checklist_id": "school_wheelchair_access_v1",
+  "title": "Inspeção de acessibilidade para cadeirantes — Escolas (MVP)",
+  "version": "1.0",
+  "items": [
+    {
+      "key": "external_ramp_exists",
+      "type": "enum",
+      "label": "Rampa na entrada principal",
+      "options": ["yes", "no", "partial", "unknown"],
+      "required": true,
+      "photo_required": true,
+      "hint": "Rampa sem degraus alternativos; preferencialmente com corrimão."
+    },
+    {
+      "key": "external_ramp_slope_ok",
+      "type": "enum",
+      "label": "Inclinação da rampa adequada",
+      "options": ["yes", "no", "unknown"],
+      "required": false,
+      "photo_required": false,
+      "hint": "Se possível, informe a inclinação aproximada em percent ou deixe foto."
+    },
+    {
+      "key": "entrance_steps_without_access",
+      "type": "enum",
+      "label": "Existem degraus sem alternativa acessível?",
+      "options": ["yes", "no", "partial", "unknown"],
+      "required": true,
+      "photo_required": true,
+      "hint": "Marque 'yes' se a entrada tem degraus e nenhuma rampa/ascensor."
+    },
+    {
+      "key": "entrance_width_cm",
+      "type": "number",
+      "label": "Largura da entrada (cm)",
+      "unit": "cm",
+      "required": false,
+      "photo_required": false,
+      "hint": "Medida aproximada — útil mas não obrigatória."
+    },
+    {
+      "key": "parking_disabled_spot",
+      "type": "enum",
+      "label": "Vaga de estacionamento reservada",
+      "options": ["yes", "no", "partial", "unknown"],
+      "required": false,
+      "photo_required": true,
+      "hint": "Foto com placa de sinalização ajuda na verificação."
+    },
+    {
+      "key": "path_clear_external",
+      "type": "enum",
+      "label": "Rota externa livre de obstáculos (calçada/entrada)",
+      "options": ["yes", "no", "partial", "unknown"],
+      "required": true,
+      "photo_required": true,
+      "hint": "Inclui ausência de degraus, desníveis, buracos, postes no caminho."
+    },
+    {
+      "key": "corridor_width_ok",
+      "type": "enum",
+      "label": "Corredores internos com largura adequada",
+      "options": ["yes", "no", "partial", "unknown"],
+      "required": true,
+      "photo_required": true,
+      "hint": "Corredores devem permitir passagem com manobra (ex.: ≥90 cm)."
+    },
+    {
+      "key": "door_width_ok",
+      "type": "enum",
+      "label": "Portas com largura adequada",
+      "options": ["yes", "no", "partial", "unknown"],
+      "required": true,
+      "photo_required": true,
+      "hint": "Portas principais e de acesso a salas de uso comum."
+    },
+    {
+      "key": "floor_even_non_slippery",
+      "type": "enum",
+      "label": "Piso nivelado e antiderrapante",
+      "options": ["yes", "no", "partial", "unknown"],
+      "required": true,
+      "photo_required": true,
+      "hint": "Importante em áreas de alto tráfego e banheiros."
+    },
+    {
+      "key": "elevator_exists_between_floors",
+      "type": "enum",
+      "label": "Elevador entre andares (se aplicável)",
+      "options": ["yes", "no", "not_applicable", "unknown"],
+      "required": false,
+      "photo_required": true,
+      "hint": "Marcar 'not_applicable' se escola é térrea."
+    },
+    {
+      "key": "elevator_features",
+      "type": "multi",
+      "label": "Recursos do elevador",
+      "options": ["buttons_low_height", "audible_announcements", "braille_buttons", "sufficient_space"],
+      "required": false,
+      "photo_required": false,
+      "hint": "Selecione todos que se aplicam."
+    },
+    {
+      "key": "accessible_bathroom_exists",
+      "type": "enum",
+      "label": "Banheiro acessível disponível",
+      "options": ["yes", "no", "partial", "unknown"],
+      "required": true,
+      "photo_required": true,
+      "hint": "Banheiro com barras, espaço de manobra e pia acessível."
+    },
+    {
+      "key": "bathroom_grab_bars",
+      "type": "enum",
+      "label": "Barras de apoio no banheiro",
+      "options": ["yes", "no", "partial", "unknown"],
+      "required": false,
+      "photo_required": true,
+      "hint": "Foto obrigatória se marcar 'yes' ou 'partial'."
+    },
+    {
+      "key": "bathroom_turning_radius_cm",
+      "type": "number",
+      "label": "Raio de giro no banheiro (cm)",
+      "unit": "cm",
+      "required": false,
+      "photo_required": false,
+      "hint": "Se souber, informe (ex.: 150 cm)."
+    },
+    {
+      "key": "classroom_space_adaptable",
+      "type": "enum",
+      "label": "Salas de aula com espaço adaptável",
+      "options": ["yes", "no", "partial", "unknown"],
+      "required": false,
+      "photo_required": true,
+      "hint": "Espaço para posicionar cadeira de rodas entre carteiras."
+    },
+    {
+      "key": "accessible_signage",
+      "type": "enum",
+      "label": "Sinalização acessível (visual/tátil)",
+      "options": ["yes", "no", "partial", "unknown"],
+      "required": false,
+      "photo_required": true,
+      "hint": "Placas com contraste, piso tátil onde aplicável."
+    },
+    {
+      "key": "emergency_evacuations_accessible",
+      "type": "enum",
+      "label": "Rotas de evacuação acessíveis",
+      "options": ["yes", "no", "partial", "unknown"],
+      "required": false,
+      "photo_required": false,
+      "hint": "Existe um plano/rota alternativa para cadeirantes?"
+    },
+    {
+      "key": "notes",
+      "type": "text",
+      "label": "Observações adicionais",
+      "required": false,
+      "photo_required": false,
+      "hint": "Use para detalhes que não cabem nas opções acima."
+    },
+    {
+      "key": "photos",
+      "type": "photos",
+      "label": "Fotos (geotag preferencial)",
+      "required": false,
+      "photo_required": false,
+      "hint": "Fotos devem ser geolocalizadas quando possível; timestamp obrigatório."
+    },
+    {
+      "key": "inspector_name",
+      "type": "text",
+      "label": "Nome do responsável pelo report",
+      "required": false,
+      "photo_required": false,
+      "hint": "Pode ser anônimo; mantenha opção."
+    },
+    {
+      "key": "inspector_contact",
+      "type": "text",
+      "label": "Contato (opcional) do revisor/inspector",
+      "required": false,
+      "photo_required": false,
+      "hint": "Email ou telefone para eventual verificação."
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+/* GameVault.css (substitua o conteúdo do seu arquivo) */
+body {
+  margin: 0;
+  padding: 0;
+  background: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 980px;
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+/* Topo: logo (esq) e menu (dir) */
+#topoGAMEVAULT {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  gap: 20px;
+}
+
+#logoGAMEVAULT img {
+  height: 100%;
+  max-height: 100px;
+  display: block;
+}
+
+#menuGAMEVAULT {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#menuGAMEVAULT a {
+  text-decoration: none;
+  color: #111;
+  font-size: 18px;
+}
+
+/* Espaço entre topo e carousel */
+.espacoTop {
+  margin-top: 24px;
+}
+
+/* Carousel */
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 780px; /* controla largura do banner */
+  height: 400px;
+  margin: 0 auto; /* centraliza */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  background: #ddd;
+}
+
+/* Slides: cada .slide ocupa 100% do carousel */
+.slides {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Botões */
+.btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 50%;
+  z-index: 5;
+}
+.btn.prev { left: 10px; }
+.btn.next { right: 10px; }
+
+/* Indicadores (bolinhas) */
+.indicators {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  background: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.dot.active { background: #333; }
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .carousel { height: 220px; }
+  #menuGAMEVAULT a { font-size: 16px; }
+}

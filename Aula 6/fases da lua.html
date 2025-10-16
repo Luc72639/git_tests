@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fases da Lua</title>
+</head>
+<body>
+    <h1>Fases da Lua</h1>
+    <img id="fase" src="luacheia.jpg" alt="Fases da Lua" width="300">
+
+    <form>
+        <input type="button" onclick="fase1()" value="Lua Cheia">
+        <input type="button" onclick="fase2()" value="Crescente">
+        <input type="button" onclick="fase3()" value="Lua Nova">
+        <input type="button" onclick="fase4()" value="Minguante">
+    </form>
+
+    <script>
+        function fase1(){
+            document.getElementById('fase').src = "luacheia.jpg";
+        }
+        function fase2(){
+            document.getElementById('fase').src = "luacrescente (1).webp";
+        }
+        function fase3(){
+            document.getElementById('fase').src = "nova.webp";
+        }
+        function fase4(){
+            document.getElementById('fase').src = "minguante.webp";
+        }
+    </script>
+</body>
+</html>

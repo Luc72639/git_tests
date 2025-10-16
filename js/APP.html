@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Checklist: Acessibilidade para Cadeirantes — Escolas (MVP)</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:#f6f8fa; margin:0; padding:20px; color:#111;}
+    .container { max-width:980px; margin:0 auto; background:#fff; padding:20px; border-radius:12px; box-shadow:0 6px 20px rgba(20,20,30,0.05);}
+    h1 { margin:0 0 10px 0; font-size:22px;}
+    p.lead { margin-top:0; color:#555; }
+    .item { border:1px solid #eee; padding:12px; border-radius:8px; margin-bottom:12px; background:#fcfdff;}
+    .label { font-weight:600; margin-bottom:6px; display:block; }
+    .hint { color:#666; font-size:13px; margin-bottom:8px; }
+    .btn { display:inline-block; padding:8px 12px; border-radius:6px; border:0; cursor:pointer; font-weight:600;}
+    .btn-export { background:#2d9cdb; color:white; }
+    .btn-clear { background:#ef5350; color:white; }
+    .options { display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
+    .option { padding:6px 10px; border-radius:8px; border:1px solid #dfe6ee; background:#fff; cursor:pointer; user-select:none; }
+    .option.selected { background:#2ecc71; color:white; border-color:transparent; }
+    input[type="number"] { padding:8px; border-radius:6px; border:1px solid #ddd; width:140px; }
+    textarea { width:100%; min-height:64px; padding:8px; border-radius:6px; border:1px solid #ddd; }
+    .small { font-size:13px; color:#666; }
+    .photos-preview { display:flex; gap:8px; margin-top:8px; flex-wrap:wrap; }
+    .photo-thumb { width:96px; height:72px; object-fit:cover; border-radius:6px; border:1px solid #ddd; }
+    footer { margin-top:18px; display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+    .meta { color:#555; font-size:13px; }
+    pre#output { max-height:300px; overflow:auto; background:#0f1724; color:#e6fffa; padding:12px; border-radius:8px; font-size:12px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Checklist — Acessibilidade para Cadeirantes (MVP)</h1>
+    <p class="lead">Formulário gerado automaticamente a partir do checklist JSON. Preencha, anexe fotos se quiser e clique em <strong>Exportar JSON</strong> para baixar o report.</p>
+
+    <div id="form"></div>
+
+    <footer>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button id="exportBtn" class="btn btn-export">📥 Exportar JSON</button>
+        <button id="clearBtn" class="btn btn-clear">🧹 Limpar respostas</button>
+        <div class="small" style="margin-left:10px;">Timestamp será adicionado automaticamente. Localização será anexada se você permitir.</div>
+      </div>
+      <div class="meta">Local: <span id="geoStatus">não obtido</span></div>
+    </footer>
+
+    <h3 style="margin-top:18px;">Preview do JSON (após exportação será igual ao arquivo baixado)</h3>
+    <pre id="output">Nenhum export ainda.</pre>
+  </div>
+
+  <script>
+    // ======= CHECKLIST JSON (use o checklist completo aqui) =======
+    const checklist = {
+      "checklist_id": "school_wheelchair_access_v1",
+      "title": "Inspeção de acessibilidade para cadeirantes — Escolas (MVP)",
+      "version": "1.0",
+      "items": [
+        {
+          "key": "external_ramp_exists",
+          "type": "enum",
+          "label": "Rampa na entrada principal",
+          "options": ["yes", "no", "partial", "unknown"],
+          "required": true,
+          "photo_required": true,
+          "hint": "Rampa sem degraus alternativos; preferencialmente com corrimão."
+        },
+        {
+          "key": "external_ramp_slope_ok",
+          "type": "enum",
+          "label": "Inclinação da rampa adequada",
+          "options": ["yes", "no", "unknown"],
+          "required": false,
+          "photo_required": false,
+          "hint": "Se possível, informe a inclinação aproximada em percent ou deixe foto."
+        },
+        {
+          "key": "entrance_steps_without_access",
+          "type": "enum",
+          "label": "Existem degraus sem alternativa acessível?",
+          "options": ["yes", "no", "partial", "unknown"],
+          "required": true,
+          "photo_required": true,
+          "hint": "Marque 'yes' se a entrada tem degraus e nenhuma rampa/ascensor."
+        },
+        {
+          "key": "entrance_width_cm",
+          "type": "number",
+          "label": "Largura da entrada (cm)",
+          "unit": "cm",
+          "required": false,
+          "photo_required": false,
+          "hint": "Medida aproximada — útil mas não obrigatória."
+        },
+        {
+          "key": "parking_disabled_spot",
+          "type": "enum",
+          "label": "Vaga de estacionamento reservada",
+          "options": ["yes", "no", "partial", "unknown"],
+          "required": false,
+          "photo_required": true,
+          "hint": "Foto com placa de sinalização ajuda na verificação."
+        },
+        {
+          "key": "path_clear_external",
+          "type": "enum",
+          "label": "Rota externa livre de obstáculos (calçada/entrada)",
+          "options": ["yes", "no", "partial", "unknown"],
+          "required": true,
+          "photo_required": true,
+          "hint": "Inclui ausência de degraus, desníveis, buracos, postes no caminho."
+        },
+        {
+          "key": "corridor_width_ok",
+          "type": "enum",
+          "label": "Corredores internos com largura adequada",
+          "options": ["yes", "no", "partial", "unknown"],
+          "required": true,
+          "photo_required": true,
+          "hint": "Corredores devem permitir passagem com manobra (ex.: ≥90 cm)."
+        },
+        {
+          "key": "door_width_ok",
+          "type": "enum",
+          "label": "Portas com largura adequada",
+          "options": ["yes", "no", "partial", "unknown"],
+          "required": true,
+          "photo_required": true,
+          "hint": "Portas principais e de acesso a salas de uso comum."
+        },
+        {
+          "key": "floor_even_non_slippery",
+          "type": "enum",
+          "label": "Piso nivelado e antiderrapante",
+          "options": ["yes", "no", "partial", "unknown"],
+          "required": true,
+          "photo_required": true,
+          "hint": "Importante em áreas de alto tráfego e banheiros."
+        },
+        {
+          "key": "elevator_exists_between_floors",
+          "type": "enum",
+          "label": "Elevador entre andares (se aplicável)",
+          "options": ["yes", "no", "not_applicable", "unknown"],
+          "required": false,
+          "photo_required": true,
+          "hint": "Marcar 'not_applicable' se escola é térrea."
+        },
+        {
+          "key": "elevator_features",
+          "type": "multi",
+          "label": "Recursos do elevador",
+          "options": ["buttons_low_height", "audible_announcements", "braille_buttons", "sufficient_space"],
+          "required": false,
+          "photo_required": false,
+          "hint": "Selecione todos que se aplicam."
+        },
+        {
+          "key": "accessible_bathroom_exists",
+          "type": "enum",
+          "label": "Banheiro acessível disponível",
+          "options": ["yes", "no", "partial", "unknown"],
+          "required": true,
+          "photo_required": true,
+          "hint": "Banheiro com barras, espaço de manobra e pia acessível."
+        },
+        {
+          "key": "bathroom_grab_bars",
+          "type": "enum",
+          "label": "Barras de apoio no banheiro",
+          "options": ["yes", "no", "partial", "unknown"],
+          "required": false,
+          "photo_required": true,
+          "hint": "Foto obrigatória se marcar 'yes' ou 'partial'."
+        },
+        {
+          "key": "bathroom_turning_radius_cm",
+          "type": "number",
+          "label": "Raio de giro no banheiro (cm)",
+          "unit": "cm",
+          "required": false,
+          "photo_required": false,
+          "hint": "Se souber, informe (ex.: 150 cm)."
+        },
+        {
+          "key": "classroom_space_adaptable",
+          "type": "enum",
+          "label": "Salas de aula com espaço adaptável",
+          "options": ["yes", "no", "partial", "unknown"],
+          "required": false,
+          "photo_required": true,
+          "hint": "Espaço para posicionar cadeira de rodas entre carteiras."
+        },
+        {
+          "key": "accessible_signage",
+          "type": "enum",
+          "label": "Sinalização acessível (visual/tátil)",
+          "options": ["yes", "no", "partial", "unknown"],
+          "required": false,
+          "photo_required": true,
+          "hint": "Placas com contraste, piso tátil onde aplicável."
+        },
+        {
+          "key": "emergency_evacuations_accessible",
+          "type": "enum",
+          "label": "Rotas de evacuação acessíveis",
+          "options": ["yes", "no", "partial", "unknown"],
+          "required": false,
+          "photo_required": false,
+          "hint": "Existe um plano/rota alternativa para cadeirantes?"
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Observações adicionais",
+          "required": false,
+          "photo_required": false,
+          "hint": "Use para detalhes que não cabem nas opções acima."
+        },
+        {
+          "key": "photos",
+          "type": "photos",
+          "label": "Fotos (geotag preferencial)",
+          "required": false,
+          "photo_required": false,
+          "hint": "Fotos devem ser geolocalizadas quando possível; timestamp obrigatório."
+        },
+        {
+          "key": "inspector_name",
+          "type": "text",
+          "label": "Nome do responsável pelo report",
+          "required": false,
+          "photo_required": false,
+          "hint": "Pode ser anônimo; mantenha opção."
+        },
+        {
+          "key": "inspector_contact",
+          "type": "text",
+          "label": "Contato (opcional) do revisor/inspector",
+          "required": false,
+          "photo_required": false,
+          "hint": "Email ou telefone para eventual verificação."
+        }
+      ]
+    };
+
+    // ======= RUNTIME STATE =======
+    const state = { answers: {}, photos: {} };
+
+    // ======= HELPERS =======
+    function createEl(tag, attrs = {}, txt) {
+      const el = document.createElement(tag);
+      Object.entries(attrs).forEach(([k,v]) => {
+        if (k === 'class') el.className = v;
+        else if (k === 'html') el.innerHTML = v;
+        else el.setAttribute(k, v);
+      });
+      if (txt) el.appendChild(document.createTextNode(txt));
+      return el;
+    }
+
+    // Toggle styles for option
+    function toggleOption(domOpt, key, value) {
+      // set selected state for enum (single choice)
+      const parent = domOpt.closest('.item');
+      parent.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      domOpt.classList.add('selected');
+      state.answers[key] = value;
+    }
+
+    // For multi (checkbox) toggle
+    function toggleMulti(domOpt, key, value) {
+      domOpt.classList.toggle('selected');
+      const selected = Array.from(domOpt.closest('.options').querySelectorAll('.option.selected')).map(s => s.dataset.val);
+      state.answers[key] = selected;
+    }
+
+    // Render form
+    function renderForm() {
+      const form = document.getElementById('form');
+      form.innerHTML = '';
+      checklist.items.forEach(item => {
+        const block = createEl('div', { class: 'item', 'data-key': item.key });
+        const label = createEl('div', { class: 'label' }, item.label + (item.required ? ' *' : ''));
+        block.appendChild(label);
+        if (item.hint) block.appendChild(createEl('div', { class: 'hint' }, item.hint));
+
+        // Enum (single-choice)
+        if (item.type === 'enum') {
+          const opts = createEl('div', { class: 'options' });
+          item.options.forEach(opt => {
+            const o = createEl('div', { class: 'option', 'data-val': opt }, opt.toUpperCase());
+            o.addEventListener('click', () => toggleOption(o, item.key, opt));
+            opts.appendChild(o);
+          });
+          block.appendChild(opts);
+        }
+
+        // Multi (checkboxes)
+        else if (item.type === 'multi') {
+          const opts = createEl('div', { class: 'options' });
+          item.options.forEach(opt => {
+            const o = createEl('div', { class: 'option', 'data-val': opt }, opt.replace(/_/g,' '));
+            o.addEventListener('click', () => toggleMulti(o, item.key, opt));
+            opts.appendChild(o);
+          });
+          block.appendChild(opts);
+        }
+
+        // Number
+        else if (item.type === 'number') {
+          const wrap = createEl('div');
+          const input = createEl('input', { type: 'number', placeholder: item.unit ? item.unit : '' });
+          input.addEventListener('input', (e) => state.answers[item.key] = e.target.value ? Number(e.target.value) : null);
+          wrap.appendChild(input);
+          block.appendChild(wrap);
+        }
+
+        // Text
+        else if (item.type === 'text') {
+          const ta = createEl('textarea');
+          ta.addEventListener('input', (e) => state.answers[item.key] = e.target.value);
+          block.appendChild(ta);
+        }
+
+        // Photos
+        else if (item.type === 'photos') {
+          const inp = createEl('input', { type: 'file', accept: 'image/*', multiple: 'multiple' });
+          const preview = createEl('div', { class: 'photos-preview' });
+          inp.addEventListener('change', async (e) => {
+            const files = Array.from(e.target.files || []);
+            preview.innerHTML = '';
+            state.photos[item.key] = [];
+            for (const f of files) {
+              const data = await fileToDataURL(f);
+              state.photos[item.key].push({ name: f.name, dataURL: data, size: f.size, type: f.type, time: new Date().toISOString() });
+              const img = createEl('img', { class: 'photo-thumb', src: data });
+              preview.appendChild(img);
+            }
+          });
+          block.appendChild(inp);
+          block.appendChild(preview);
+        }
+
+        form.appendChild(block);
+      });
+
+      // Inspector fields (name/contact)
+      const metaBlock = createEl('div', { class: 'item' });
+      metaBlock.appendChild(createEl('div', { class: 'label' }, 'Metadados (opcional)'));
+      const nameInput = createEl('input', { type: 'text', placeholder: 'Nome do responsável (opcional)' });
+      nameInput.addEventListener('input', e => state.answers['inspector_name'] = e.target.value);
+      const contactInput = createEl('input', { type: 'text', placeholder: 'Contato (email/telefone) (opcional)', style:'margin-top:8px;' });
+      contactInput.addEventListener('input', e => state.answers['inspector_contact'] = e.target.value);
+      metaBlock.appendChild(nameInput);
+      metaBlock.appendChild(contactInput);
+      form.appendChild(metaBlock);
+    }
+
+    function fileToDataURL(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Geo helper with timeout
+    function getGeo(timeoutMs = 7000) {
+      return new Promise((resolve) => {
+        if (!navigator.geolocation) return resolve(null);
+        let resolved = false;
+        const timer = setTimeout(() => { if (!resolved) { resolved = true; resolve(null); } }, timeoutMs);
+        navigator.geolocation.getCurrentPosition(pos => {
+          if (resolved) return;
+          resolved = true;
+          clearTimeout(timer);
+          resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude, accuracy: pos.coords.accuracy });
+        }, err => {
+          if (resolved) return;
+          resolved = true;
+          clearTimeout(timer);
+          resolve(null);
+        }, { maximumAge: 60000, timeout: timeoutMs, enableHighAccuracy: true });
+      });
+    }
+
+    // Export JSON (assemble payload)
+    async function exportJSON() {
+      // basic validation: required fields
+      const missing = checklist.items.filter(i => i.required && (state.answers[i.key] === undefined || state.answers[i.key] === null || state.answers[i.key] === '' ) && i.type !== 'photos');
+      if (missing.length > 0) {
+        if (!confirm('Existem campos obrigatórios não preenchidos. Deseja continuar mesmo assim?')) return;
+      }
+
+      document.getElementById('exportBtn').disabled = true;
+      document.getElementById('exportBtn').textContent = 'Obtendo localização...';
+
+      const geo = await getGeo();
+      document.getElementById('geoStatus').textContent = geo ? `${geo.lat.toFixed(6)}, ${geo.lng.toFixed(6)} (acc ${geo.accuracy}m)` : 'não disponível';
+
+      const payload = {
+        checklist_id: checklist.checklist_id,
+        version: checklist.version,
+        school_id: "", // preencha se quiser antes de enviar ao backend
+        reporter_id: "", // opcional
+        timestamp: new Date().toISOString(),
+        location: geo,
+        answers: state.answers,
+        photos: state.photos,
+        verification_level: "user"
+      };
+
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const fname = `report_${(payload.school_id || 'no-school')}_${new Date().toISOString().replace(/[:.]/g,'-')}.json`;
+      a.href = url;
+      a.download = fname;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+
+      document.getElementById('output').textContent = JSON.stringify(payload, null, 2);
+      document.getElementById('exportBtn').disabled = false;
+      document.getElementById('exportBtn').textContent = '📥 Exportar JSON';
+    }
+
+    // Clear answers
+    function clearAll() {
+      if (!confirm('Limpar todas as respostas?')) return;
+      state.answers = {};
+      state.photos = {};
+      renderForm();
+      document.getElementById('output').textContent = 'Nenhum export ainda.';
+      document.getElementById('geoStatus').textContent = 'não obtido';
+    }
+
+    // Bind events
+    document.addEventListener('DOMContentLoaded', () => {
+      renderForm();
+      document.getElementById('exportBtn').addEventListener('click', exportJSON);
+      document.getElementById('clearBtn').addEventListener('click', clearAll);
+    });
+  </script>
+</body>
+</html>

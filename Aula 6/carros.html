@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trocar Carros</title>
+</head>
+<body>
+    <h2>Carro</h2>
+    <img id="carro" src="cybertckuk.jpg" alt="Carro" width="300">
+    
+    <form>
+        <input type="button" onclick="carro1()" value="FIAT UNO">
+        <input type="button" onclick="carro2()" value="CYBERTRUCK">
+        <input type="button" onclick="carro3()" value="MCLAREN SENNA">
+    </form>
+
+    <script>
+        function carro1(){
+            document.getElementById('carro').src = "FIATUNO.jpg";
+        }
+        function carro2(){
+            document.getElementById('carro').src = "cybertckuk.jpg";
+        }
+        function carro3(){
+            document.getElementById('carro').src = "mclaren_senna.jpg";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estações do Ano</title>
+</head>
+<body>
+    <h1>Estações do Ano</h1>
+    <img id="estacao" src="primavera.png" alt="Estações do Ano" width="300">
+
+    <form>
+        <input type="button" onclick="estacao1()" value="Primavera">
+        <input type="button" onclick="estacao2()" value="Verão">
+        <input type="button" onclick="estacao3()" value="Outono">
+        <input type="button" onclick="estacao4()" value="Inverno">
+    </form>
+
+    <script>
+        function estacao1(){
+            document.getElementById('estacao').src = "primavera.png";
+        }
+        function estacao2(){
+            document.getElementById('estacao').src = "verão.jpg";
+        }
+        function estacao3(){
+            document.getElementById('estacao').src = "outono.jpg";
+        }
+        function estacao4(){
+            document.getElementById('estacao').src = "inverno.jpg";
+        }
+    </script>
+</body>
+</html>

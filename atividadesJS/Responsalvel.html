@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table align="center" width="980" border="1">
+        <tr>
+            <td colspan="3">Nome: <input type="text" name="nome" id="nome"></td>
+            <tr>
+            <td>Vinculo com o cliente: <input type="text" name="vinculo" id="vinculo"></td>
+            <br>
+            <td>Nascimento: <input type="date" name="nascimento" id="nascimento"></td>
+            <br>
+            <td>Sexo: <input type="radio" id="masculino" name="genero" value="masculino">
+            <label for="masculino">Masculino</label>
+            <input type="radio" id="feminino" name="genero" value="feminino">
+            <label for="feminino">Feminino</label>
+            </tr>
+            </td>
+        
+            <td><label for="EstadoCivil">Estado Civil:</label>
+               <select id="EstadoCivil" name="EstadoCivil">
+                  <option value="Solteiro">Solteiro</option>
+                  <option value="Solteira">Solteira</option>
+                  <option value="Outro">Outro</option>
+               </td>
+            </select>
+            <td>Escolaridade:
+             <select id="Escolaridade" name="Escolaridade">
+                  <option value="Fundamental">Fundamental</option>
+                  <option value="Medio">Médio</option>
+                  <option value="Superior">Superior</option>
+               </select>
+            </td>
+        </tr>
+        <td width="100"><input type="submit" name="Enviar" value="Cadastrar" style="background-color: rgb(9, 255, 0);"></td>
+        <td width="100"><input type="reset" name="Limpar" value="Cancelar" style="background-color: rgb(255, 0, 0);"></td>
+    </tr>
+    </table>
+    <script>
+        function cadastrarCliente() {}
+ 
+        function cancelarCliente(){
+  }
+    </script>
+</body>
+</html>

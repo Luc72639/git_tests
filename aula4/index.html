@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        Nome: <input type="text" id="nome">
+              <input type="submit" onclick="imprimirVariavies()" value="Cadastrar"><br>
+        Sobrenome: <input type="text" id="sobrenome">
+              <input type="submit" onclick="imprimirVariavies()" value="Cadastrar"><br>
+        Endereço: <input type="text" id="endereco">
+              <input type="submit" onclick="imprimirVariavies()" value="Cadastrar">
+    </form>
+    <script>
+        function imprimirVariavies(){
+        var nome = document.getElementById("nome").value;
+        var sobrenome = document.getElementById("sobrenome").value;
+        var endereco = document.getElementById("endereco").value;
+       // var ano = 2025;
+        alert(nome + " " + sobrenome + " " + endereco);
+        }
+    </script>
+
+</body>
+</html>

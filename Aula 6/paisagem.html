@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Paisagens</h1>
+    <img id="carro" src="paisagem.jpg" alt="Carro" width="300">
+
+    <form>
+        <input type="button" onclick="paisagem1()" value="Lagoa">
+        <input type="button" onclick="paisagem2()" value="Noite estrelada">
+        <input type="button" onclick="paisagem3()" value="Pôr do sol">
+    </form>
+
+    <script>
+        function paisagem1(){
+            document.getElementById('carro').src = "paisagem.jpg";
+        }
+        function paisagem2(){
+            document.getElementById('carro').src = "noite.jpg";
+        }
+        function paisagem3(){
+            document.getElementById('carro').src = "Sol.jpg";
+        }
+    </script>
+</body>
+</html>

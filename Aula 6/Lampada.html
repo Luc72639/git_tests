@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Lampada: <img src="1 1.jpg" alt="Lâmpada Ligada" width="100" onclick="myFunction()">
+    <form>
+        <input type="button" onclick="ligar()" value="Ligar">
+        <input type="button" onclick="desligar()" value="Desligar">
+    </form>
+    <script>
+        function ligar(){
+            document.querySelector('img').src = "1 1.jpg"
+        }
+        function desligar(){
+            document.querySelector('img').src = "2 1.png"
+        }
+
+    </script>
+</body>
+</html>
+

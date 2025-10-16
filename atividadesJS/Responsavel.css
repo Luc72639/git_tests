@@ -1,0 +1,55 @@
+*body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+    text-align: center;
+    margin-top: 20px;
+}
+for{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+input{
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 10px;
+    
+}
+#EstadoCivil{
+    width: 315px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #004fa8;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+#Escolaridade{
+    width: 315px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #004fa8;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+button{
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #ff0000;
+}
