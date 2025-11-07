@@ -16,7 +16,7 @@
         </div>
         <div id="Menu">
             <div class="espacamento"></div>
-                <a href="index.html">Home</a>
+                <a href="projeto.html">Home</a>
                 <a style="word-spacing: 0px;" href="medio.html">Ensino Médio</a>
                 <a href="Projetos.html">Serviços</a>
                 <a href="contato.html">Contato</a>
@@ -37,13 +37,13 @@
        </div>
        <div id="containerContatoDireita">
         <h1>Formulário: </h1>
-         <label for="Nome">Nome:</label>
-         <input type="text" class="estiloform" id="Nome" name="Nome" required><br><br>
-         <label for="email">Email</label>
-         <input type="email" class="estiloform" id="email" name="email" required><br><br>
-         <label for="Assunto" class="estiloform"></label>
-         <textarea>Assunto:</textarea><br><br>
-         <button class="botao" type="submit">Enviar</button>
+        <form action="enviacontato.php" method="post">
+            Nome: <input name="nome" class="estiloform" type="text">
+            Email: <input name="email" class="estiloform" type="email">
+            Assunto: <input name="assunto" class="estiloform" type="text">
+            Mensagem: <textarea name="mensagem" class="estiloform"></textarea>
+            <input name="enviar" class="estiloform" type="submit">
+        </form>
         </div>
         </div>
     </div>
