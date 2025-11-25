@@ -1,12 +1,13 @@
 var imagens = [
-    "imagens/local1.png",
-    "imagens/LocalJardim.jpg",
-    "imagens/DentroJardim.jpg",
-    "imagens/Buffet1.jpg",
-    "imagens/Buffet2.jpg",
-    "imagens/Lanche1.jpg",
-    "imagens/Lanche2.jpg",
-    "imagens/Café1.jpg",
+    "imagens/local3.png",
+    "imagens/container1.png",
+    "imagens/containerdentro.jpg",
+    "imagens/sopa1.jpg",
+    "imagens/almoço1.jpg",
+    "imagens/almoço2.jpg",
+    "imagens/almoço3.jpg",
+    "imagens/almoço4.jpg",
+    "imagens/Lanche6.jpg",
 ];
 var indice = 0;
 
