@@ -444,5 +444,15 @@ input[type="button"]:hover {
     color: #540000;
     text-decoration: none;
 }
+button{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 8px;
+    background: #8a0000;
+    cursor: pointer;
+}
 
 
